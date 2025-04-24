@@ -412,16 +412,28 @@ export default class Navigation {
     }
   };
 
-  onMouseUp = () => {
+  onMouseUp = (event) => {
     if (
-      this.startClick.x == this.mouse.x &&
-      this.startClick.y == this.mouse.y
+      this.startClick.x === event.clientX &&
+      this.startClick.y === event.clientY &&
+      this.objectRaycasted &&
+      !this.isCameraMoving
     ) {
-      if (
-        !this.isCameraMoving &&
-        this.objectRaycasted !== null &&
-        this.currentStage !== this.objectRaycasted
-      ) {
+      const audioManager = this.experience.world.audioManager;
+      audioManager.playSingleAudio("click", 0.2);
+      if (this.objectRaycasted === "whiteboard") {
+        // Instead of flying directly, make Chuc walk first
+        if (this.experience.world.chucIdle) { // Check if chucIdle exists
+          this.experience.world.chucIdle.walkToWhiteboard(() => {
+            // Callback to fly camera after walking
+            this.flyToPosition(this.objectRaycasted);
+          });
+        } else {
+          // Fallback if chucIdle isn't ready or doesn't exist
+          this.flyToPosition(this.objectRaycasted);
+        }
+      } else {
+        // Handle other clickable objects
         this.flyToPosition(this.objectRaycasted);
       }
     }

@@ -41,6 +41,7 @@ export default class AudioManager {
   }
 
   playSingleAudio(audioName, volume) {
+    return; // Disable audio
     if (this.isMuted) {
       return;
     }
@@ -67,6 +68,7 @@ export default class AudioManager {
     };
   }
   playLoopAudio(audioName, volume) {
+    return; // Disable audio
     const buffer = this.resources.items[audioName];
     const listener = new THREE.AudioListener();
     this.camera.add(listener);

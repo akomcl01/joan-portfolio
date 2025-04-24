@@ -11,6 +11,7 @@ import RubiksCube from "./RubiksCube.js";
 import Skybox from "./Skybox.js";
 import Confetti from "./Confetti.js";
 import AudioManager from "./AudioManager.js";
+import ChucIdle from "./ChucIdle.js";
 
 import { RUBIK_POSITION, RUBIK_SCALE } from "./constants.js";
 
@@ -35,6 +36,7 @@ export default class World {
         this.setConfetti();
         this.setCoffeeSteam();
         this.setRubiksCube();
+        this.setChucIdle();
       }
     });
   }
@@ -86,6 +88,10 @@ export default class World {
     this.audioManager = new AudioManager();
   }
 
+  setChucIdle() {
+    this.chucIdle = new ChucIdle();
+  }
+
   resize() {}
 
   update() {
@@ -97,6 +103,7 @@ export default class World {
     if (this.rightMonitorScreen) this.rightMonitorScreen.update();
     if (this.confetti) this.confetti.update();
     if (this.whiteboard) this.whiteboard.update();
+    if (this.chucIdle) this.chucIdle.update();
   }
 
   destroy() {}

@@ -42,88 +42,11 @@ export default class ArcadeScreen {
   }
 
   setModel = () => {
-    this.model.arcadeMachineModel = this.resources.items.arcadeMachine.scene;
-    this.model.arcadeMachineModel.traverse((child) => {
-      if (child.isMesh) {
-        child.material = this.arcadeMachineMaterial;
-      }
-    });
-    this.model.arcadeMachineModel.name = "arcadeMachine";
-    this.scene.add(this.model.arcadeMachineModel);
+    // Arcade machine model removed
   };
 
   setArcadeScreen = () => {
-    const container = document.createElement("div");
-    container.style.width = this.screenSize.width + "px";
-    container.style.height = this.screenSize.height + "px";
-
-    const iframe = document.createElement("iframe");
-
-    iframe.src = ARCADE_IFRAME_SRC;
-    iframe.style.width = this.screenSize.width + "px";
-    iframe.style.height = this.screenSize.height + "px";
-    iframe.style.padding = ARCADE_IFRAME_PADDING;
-
-    iframe.style.transparent = true;
-    iframe.id = "arcade-screen";
-    iframe.style.boxSizing = "border-box";
-    iframe.style.background = "black";
-    container.appendChild(iframe);
-    iframe.addEventListener("load", () => {
-      this.iframeWindow = iframe.contentWindow;
-    });
-
-    const css3dobject = new CSS3DObject(container);
-
-    css3dobject.scale.copy(ARCADE_CSS_OBJECT_SCALE);
-    css3dobject.position.copy(ARCADE_CSS_OBJECT_POSITION);
-    css3dobject.rotateY(ARCADE_CSS_OBJECT_ROTATION_Y);
-    css3dobject.rotateX(ARCADE_CSS_OBJECT_ROTATION_X);
-    this.cssArcadeMachineScene.add(css3dobject);
-    const materialCRT = new ShaderMaterial({
-      blending: NoBlending,
-      side: DoubleSide,
-      uniforms: {
-        uCurvature: { value: CRT_UNIFORMS.uCurvature },
-        uScreenResolution: {
-          value: CRT_UNIFORMS.uScreenResolution,
-        },
-        uScanLineOpacity: {
-          value: CRT_UNIFORMS.uScanLineOpacity,
-        },
-        uBaseColor: {
-          value: CRT_UNIFORMS.uBaseColor,
-        },
-        uColor: {
-          value: CRT_UNIFORMS.uColor,
-        },
-        uVignetteOpacity: {
-          value: CRT_UNIFORMS.uVignetteOpacity,
-        },
-        uBrightness: { value: CRT_UNIFORMS.uBrightness },
-        uVignetteRoundness: {
-          value: CRT_UNIFORMS.uVignetteOpacity,
-        },
-      },
-      vertexShader: vertexShader,
-      fragmentShader: fragmentShader,
-    });
-    // Create plane geometry
-    const geometry = new PlaneGeometry(
-      this.screenSize.width,
-      this.screenSize.height
-    );
-    // Create the GL plane mesh
-    this.model.screen = new Mesh(geometry, materialCRT);
-
-    // Copy the position, rotation and scale of the CSS plane to the GL plane
-    this.model.screen.position.copy(css3dobject.position);
-    this.model.screen.rotation.copy(css3dobject.rotation);
-    this.model.screen.scale.copy(css3dobject.scale);
-    this.model.screen.name = "arcadeMachineScreen";
-
-    // Add to gl scene
-    this.model.arcadeMachineModel.add(this.model.screen);
+    // Arcade screen removed
   };
 
   handleKeyDownParent = (event) => {

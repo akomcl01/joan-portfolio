@@ -49,6 +49,7 @@ export default [
       { name: "linkedin", source: "/assets/models/linkedin.glb" },
       { name: "github", source: "/assets/models/github.glb" },
       { name: "itchio", source: "/assets/models/itchio.glb" },
+      { name: "chucIdle", source: "/assets/models/chucIdle.glb", type: "model" },
       {
         name: "cubeTexture",
         source: [
