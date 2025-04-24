@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Setup</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+            height: 100vh; /* Ensure body takes full height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            box-sizing: border-box;
+        }
+        .quiz-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: auto; /* Center horizontally */
+        }
+        h2 {
+            color: #555;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        input[type="color"] {
+            padding: 0;
+            height: 40px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Setup Your AI Agent</h2>
+        <form id="agent-quiz-form">
+            <div class="form-group">
+                <label for="agent-name">1. What is the agent name?</label>
+                <input type="text" id="agent-name" name="agentName" required>
+            </div>
+            <div class="form-group">
+                <label for="agent-color">2. Pick the color</label>
+                <input type="color" id="agent-color" name="agentColor" value="#007bff" required>
+            </div>
+            <div class="form-group">
+                <label for="primary-goal">3. What is the primary goal?</label>
+                <textarea id="primary-goal" name="primaryGoal" required></textarea>
+            </div>
+            <button type="submit">Submit Setup</button>
+        </form>
+    </div>
+
+    <script>
+        // Optional: Add any JS needed for the form, like submission handling
+        const form = document.getElementById('agent-quiz-form');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent default form submission
+            console.log('Form submitted!');
+            // Here you could potentially send data back to the main Three.js experience
+            // using postMessage if needed, but for now, just log it.
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            console.log('Agent Setup Data:', data);
+            // You might want to display a success message or clear the form
+            alert('Setup Submitted! Check the console for data.');
+        });
+    </script>
+</body>
+</html>

@@ -61,7 +61,7 @@ export default class LeftMonitorScreen {
 
     const iframe = document.createElement("iframe");
 
-    iframe.src = LEFT_MONITOR_IFRAME_SRC;
+    iframe.src = "../quiz.html"; // Load the quiz HTML
     iframe.style.width = this.screenMonitorSize.width + "px";
     iframe.style.height = this.screenMonitorSize.height + "px";
     iframe.style.padding = MONITOR_IFRAME_PADDING;
